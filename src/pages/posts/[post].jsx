@@ -1,4 +1,3 @@
-
 import renderToString from "next-mdx-remote/render-to-string";
 import hydrate from "next-mdx-remote/hydrate";
 import matter from "gray-matter";
@@ -67,7 +66,6 @@ export const getStaticProps = async ({ params }) => {
       tags: data.tags,
       author: data.author,
       source: mdxSource
-    },
-  };
+    },
+  };
 };
-
