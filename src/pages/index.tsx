@@ -21,6 +21,8 @@ import Image from "next/image";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Home from "../components/Home";
+import mImage from '../../public/images/grad.jpg'
+import mImage2 from '../../public/images/bb.jpg'
 import SkeletonComponent from "../components/SkeletonComponent";
 const Homee = () => {
     const title = 'Test Blog';
@@ -190,7 +192,18 @@ console.log(selectedItem)
      
     
       </div>
-  
+     
+      <div className='
+    flex flex-wrap  mt-4 mb-4 pr-8 pl-8 min-w-7xl'>
+        <div className="lg:w-[50%] sm:mx-auto sm:mt-[10px]  flex flex-col gap-[28px]">
+            <Image className="max-w-[95%]" src={mImage} alt="seasonal-capsule-w17" />
+            </div>
+            <div className="lg:w-[50%] sm:mx-auto sm:mt-[10px]  flex flex-col gap-[28px]">
+            <Image className="max-w-[95%]" src={mImage2} alt="seasonal-capsule-w17" />
+            </div>
+      
+    </div>
+
     <Footer/>
 
 
