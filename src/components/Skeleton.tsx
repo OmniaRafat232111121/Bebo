@@ -4,37 +4,16 @@ import 'react-image-gallery/styles/css/image-gallery.css';
 import { MdClose } from 'react-icons/md';
 import { StaticImageData } from 'next/image';
 import { PostContent } from '../lib/posts';
-
-
-
-const images = [
-  {
-    original: '/images/s/2.png',
-    thumbnail: '/images/s/2.png',
-  },
-  {
-    original: '/images/s/3.png',
-    thumbnail: '/images/s/3.png',
-  },
-  {
-    original: '/images/s/4.png',
-    thumbnail: '/images/s/4.png',
-  },
-];
-
 interface SkeletonComponentProps {
   selectedItem:PostContent;
 }
-
 const MyComponent: React.FC<SkeletonComponentProps> = ({ selectedItem}) => {
   const { id, images, title, color, size, pieces, address } = selectedItem;
-  // const imageSrc = image.toString();
   const [isLoading, setIsLoading] = useState(true); // Set initial loading state to true
   const [isBannerVisible, setIsBannerVisible] = useState(true);
   const closeBanner = () => {
     setIsBannerVisible(false);
   };
-
   useEffect(() => {
     // Simulating data loading
     const timer = setTimeout(() => {
@@ -45,7 +24,6 @@ const MyComponent: React.FC<SkeletonComponentProps> = ({ selectedItem}) => {
       clearTimeout(timer);
     };
   }, []);
-  // console.log(isBannerVisible);
   return (
 
    <>
@@ -58,7 +36,11 @@ const MyComponent: React.FC<SkeletonComponentProps> = ({ selectedItem}) => {
               {isLoading ? (
                 <div className='h-80 bg-gray-300 animate-pulse'></div>
               ) : (
-                <ImageGallery items={images} />
+                <ImageGallery
+                items={selectedItem.images.map((image) => ({
+                  original: image.image,
+                }))}
+              />
               )}
             </div>
           </div>
