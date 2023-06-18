@@ -7,6 +7,7 @@ const postsDirectory = path.join(process.cwd(), "content/posts");
 
 export type PostContent = {
   readonly date: string;
+  readonly author: string;
   readonly title: string;
   readonly color: string;
   readonly size: string;
@@ -42,6 +43,7 @@ export function fetchPostContent(): PostContent[] {
       });
       const matterData = matterResult.data as {
         date: string;
+        author: string;
         title: string;
         images: any[];
         tags: string[];
