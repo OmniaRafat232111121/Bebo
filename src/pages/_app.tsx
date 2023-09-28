@@ -11,9 +11,9 @@ function MyApp({ Component, pageProps }: AppProps) {
         <div 
         className='bg-[#F6F6F6]'
         >
-          {/* <Header/> */}
+          <Header/>
           <Component {...pageProps} />
-          {/* <Footer/> */}
+          <Footer/>
         </div>
     </>
   );

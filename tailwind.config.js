@@ -4,17 +4,20 @@ module.exports = {
     "./src/components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    colors: {
+      green: "#13805D",
+      white: "#fff",
+    },
     extend: {
       backgroundImage: {
-        circularLight: 'repeating-radial-gradient(rgba(0,0,0,0.4) 2px, #f3f4f6 5px, #f3f4f6 100px);'
-      }
+        circularLight:
+          "repeating-radial-gradient(rgba(0,0,0,0.4) 2px, #f3f4f6 5px, #f3f4f6 100px);",
+      },
     },
     fontFamily: {
       sans: ["'Readex Pro'"],
-      mono: ["'Readex Pro'"]
-    }
+      mono: ["'Readex Pro'"],
+    },
   },
-  plugins: [
-    require('@tailwindcss/typography')
-  ],
-}
+  plugins: [require("@tailwindcss/typography")],
+};

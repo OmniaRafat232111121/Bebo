@@ -17,26 +17,26 @@ export default function PostItem({ post }: Props) {
   };
  
 
-
-
+console.log(post.images[0])
   return (
     <div>
       <ul>
-        {post.images.map((img: any, k: any) => (
-          <li key={k}>
-            <Image src={img.image} width={400} 
-            height={500} alt={img.description} />
+
+          <li >
+            <Image src={post.images[0].image} width={400} 
+            height={500} alt=""  />
             <div className="parent-container">
               <button className="quick-review-button" 
                onClick={handleToggleDetails} >Quick Review</button>
                 </div>
 
           </li>
-        ))}
+      
       </ul>
-
 <Link href="/Details">
-      <a className="bg-gradient-to-r from-red-600 to-[#bb0004] rounded-full py-2 px-4 mt-4 my-2 text-sm text-white hover:bg-purple-700 w-[70%] m-auto flex flex-row justify-center">
+      <a className="bg-gradient-to-r from-red-600 to-[#bb0004] 
+      rounded-full py-2 px-4 mt-4 my-2 text-sm text-white
+       hover:bg-purple-700 w-[70%] m-auto flex flex-row justify-center">
         تفاصيل البدلة
       </a>
     </Link>

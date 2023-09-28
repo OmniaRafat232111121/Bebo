@@ -1,3 +1,6 @@
+
+
+
 import fs from "fs";
 import matter from "gray-matter";
 import path from "path";
@@ -6,6 +9,7 @@ import yaml from "js-yaml";
 const postsDirectory = path.join(process.cwd(), "content/posts");
 
 export type PostContent = {
+  [x: string]: any;
   readonly date: string;
   readonly author: string;
   readonly title: string;

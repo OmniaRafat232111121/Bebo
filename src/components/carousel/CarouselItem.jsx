@@ -9,3 +9,4 @@ const CarouselItem = ({ slide, stopSlide, startSlide }) => {
 }
 
 export default CarouselItem
+

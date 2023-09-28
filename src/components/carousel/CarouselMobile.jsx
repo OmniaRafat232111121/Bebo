@@ -46,7 +46,8 @@ const Carousel = ({ slides, interval = 5000, controls = false, indicators = fals
     }, [])
 
     return (
-        <div className="carousel lg:w-[75%]  md:w-full  ">
+       <>
+        <div className="carousel lg:w-[75%] sm:hidden w-full mt-[50px] min-h-screen">
             <div 
                 className="carousel-inner"
                 style={{ transform: `translateX(${-currentSlide * 100}%)`}}
@@ -58,7 +59,8 @@ const Carousel = ({ slides, interval = 5000, controls = false, indicators = fals
             {indicators && <CarouselIndicators slides={slides} currentIndex={currentSlide} switchIndex={switchIndex} />}
             {controls && <CarouselControls prev={prev} next={next} />}
         </div>
-      
+       
+       </>
     )
 }
 

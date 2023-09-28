@@ -196,3 +196,62 @@ nav ul li div .products {
 .parent-container:hover .quick-review-button {
   opacity: 1;
 }
+
+/* .carousel-item {
+  margin-top: 100px !important;
+} */
+
+.review-button {
+  background-color: #f5f1f1;
+  color: red;
+  padding: 5px;
+  border: none;
+  font-size: 16px;
+  font-weight: light;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  position: relative;
+  bottom: 50px;
+  left: 40px;
+  opacity: 0;
+  width: 80%;
+}
+
+.parent-container:hover .review-button {
+  opacity: 1;
+}
+
+.tags-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.tag {
+  padding: 8px 16px;
+  margin-right: 8px;
+  border: none;
+  background-color: #f0f0f0;
+  color: #333;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.6s ease;
+  outline: none;
+  border-radius: 5px;
+}
+
+.tag.active {
+  background-color: rgb(90, 89, 89);
+  color: #fff;
+}
+
+
+
+
+.react-multiple-carousel__arrow {
+
+  z-index: 100 !important;
+ 
+}
+
+

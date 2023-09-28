@@ -9,7 +9,6 @@ import { countPosts, listPostContent, PostContent } from "../../lib/posts";
 import { listTags, TagContent } from "../../lib/tags";
 type Props = {
   posts: PostContent[];
-
   pagination: {
     current: number;
     pages: number;
@@ -23,7 +22,13 @@ export default function Index({ posts, pagination }: Props) {
       <BasicMeta url={url} title={title} />
       <OpenGraphMeta url={url} title={title} />
       <TwitterCardMeta url={url} title={title} />
-      <PostList posts={posts} pagination={pagination} images={""} />
+      <PostList 
+      posts={posts} 
+
+      pagination={pagination}
+      images={""}  />
+
+
     </Layout>
   );
 }

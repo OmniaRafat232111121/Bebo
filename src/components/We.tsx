@@ -14,9 +14,7 @@ import c6 from ".././public/images/6.png";
 import c7 from ".././public/images/7.png";
 import c8 from ".././public/images/8.png";
 import c9 from ".././public/images/9.png";
-import mImage from ".././public/images/l1.png";
-import mmImage from ".././public/images/l2.png";
-import Image from "next/image";
+import Link from 'next/link';
 import React, { useState } from 'react';
 
 const Homee = () => {
@@ -143,9 +141,11 @@ const Homee = () => {
              
                 <ul className=" w-full flex lg:flex-row md:flex-row flex-col md:items-center justify-center gap-7 ">
                     <li >
-                        <a className="pt-2 pb-3 hover:text-[#bb0004] border-[#bb0004] hover:border-y-2" href="#"
+                        <Link 
+                        href={"/"}
+                        className="pt-2 pb-3 hover:text-[#bb0004] border-[#bb0004] hover:border-y-2" href="#"
                         >الرئيسية
-                        </a>
+                        </Link>
                     </li>
                     <li className="">
                         <a className="pt-2 pb-3 hover:text-[#bb0004] border-[#bb0004] hover:border-y-2" href="#">

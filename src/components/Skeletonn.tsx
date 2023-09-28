@@ -2,47 +2,22 @@ import React, { useState, useEffect } from 'react';
 import ImageGallery from 'react-image-gallery';
 import 'react-image-gallery/styles/css/image-gallery.css';
 import { MdClose } from 'react-icons/md';
-import { StaticImageData } from 'next/image';
-
-
-
-const images = [
-  {
-    original: '/images/s/2.png',
-    thumbnail: '/images/s/2.png',
-  },
-  {
-    original: '/images/s/3.png',
-    thumbnail: '/images/s/3.png',
-  },
-  {
-    original: '/images/s/4.png',
-    thumbnail: '/images/s/4.png',
-  },
-];
+import { PostContent } from '../lib/posts';
 
 interface SkeletonComponentProps {
-  selectedItem: {
-    id: number;
-    image: StaticImageData;
-    title: string;
-      color: string;
-      size: string;
-      pieces: string;
-      address: string;
-    
-  };
+  selectedItem:PostContent;
 }
 
-const MyComponent: React.FC<SkeletonComponentProps> = ({ selectedItem }) => {
-  const { id, image, title, color, size, pieces, address } = selectedItem;
-  // const imageSrc = image.toString();
-  const [isLoading, setIsLoading] = useState(true); // Set initial loading state to true
+const MyComponent: React.FC<SkeletonComponentProps> =
+ ({ selectedItem}) => {
+   const { id, images, title, color, size, pieces, address } = selectedItem;
+  const [isLoading, setIsLoading] = useState(false); // Set initial loading state to true
   const [isBannerVisible, setIsBannerVisible] = useState(true);
+  console.log(isBannerVisible)
   const closeBanner = () => {
     setIsBannerVisible(false);
+    
   };
-
   useEffect(() => {
     // Simulating data loading
     const timer = setTimeout(() => {
@@ -53,22 +28,30 @@ const MyComponent: React.FC<SkeletonComponentProps> = ({ selectedItem }) => {
       clearTimeout(timer);
     };
   }, []);
-  // console.log(isBannerVisible);
-
+  const imageItems = images
+  ? images.map((image) => ({
+      original: image.image,
+    }))
+  : [];
 
   return (
 
    <>
       {isBannerVisible && (
-       <div className= ' fixed  inset-0 bg-black bg-opacity-30 flex z-50 mt-[100px] text-white'>
+       <div className= {`fixed lg:left-[50%] lg:top-[-20px]  md:left-[0px]  md:top-[-30px] sm:left-[0px]  sm:w-[70%] sm:top-[150px] 
+        inset-0 bg-black bg-opacity-30 flex z-[1000]
+         text-[#000]`}>
 
-        <div className='w-[490px] text-black h-full fixed  bg-white'>
-          <div className='flex justify-center mt-[30px]'>
+        <div className='lg:w-[50%] text-black h-full fixed 
+         bg-white   w-[100%] top-[150px] sm:top-0 sm:mt-[120px] '>
+          <div className='flex justify-center lg:mt-[100px] sm:mt-[100px]  '>
             <div className='my-custom-gallery'>
               {isLoading ? (
                 <div className='h-80 bg-gray-300 animate-pulse'></div>
               ) : (
-                <ImageGallery items={images} />
+                
+                <ImageGallery items={imageItems} />
+
               )}
             </div>
           </div>
@@ -81,7 +64,7 @@ const MyComponent: React.FC<SkeletonComponentProps> = ({ selectedItem }) => {
               <div className='h-10 mt-5 bg-gray-300 animate-pulse'></div>
             </div>
           ) : (
-            <div className='mt-1'>
+            <div className='mt-3'>
               <h3 className='border-b-2 text-center border-black pb-2'>
                 {selectedItem.title}
               </h3>
@@ -105,14 +88,16 @@ const MyComponent: React.FC<SkeletonComponentProps> = ({ selectedItem }) => {
          
 
           <div >
-              <button
-                className='absolute top-[50px] right-2 bg-red-700 rounded-md border-0 text-white text-3xl cursor-pointer focus:outline-none'
-                onClick={closeBanner}
-                title='Close'
-                aria-label='Close'
-              >
-                <MdClose className=' h-8 w-8' />
-              </button>
+          <button
+  className='absolute top-[20px] right-[40px] 
+  bg-[#ff0000] rounded-md border-0
+  text-white text-3xl cursor-pointer focus:outline-none'
+  onClick={closeBanner}
+  title='Close'
+  aria-label='Close'
+>
+  <MdClose className='h-8 w-8' />
+</button>
             </div>
         </div>
         </div>
@@ -123,4 +108,3 @@ const MyComponent: React.FC<SkeletonComponentProps> = ({ selectedItem }) => {
 };
 
 export default MyComponent;
-

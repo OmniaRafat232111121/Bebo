@@ -1,6 +1,8 @@
 import Head from "next/head";
-import ImageGallery from 'react-image-gallery';
-import 'react-image-gallery/styles/css/image-gallery.css';
+// import ImageGallery from 'react-image-gallery';
+// import 'react-image-gallery/styles/css/image-gallery.css';
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
 import Skeleton from 'react-loading-skeleton';
 import cImage from "../../public/images/c1.png";
 import ccImage from "../../public/images/c2.png";
@@ -23,90 +25,55 @@ import Header from "../components/Header";
 import Home from "../components/Home";
 import mImage from '../../public/images/grad.jpg'
 import mImage2 from '../../public/images/bb.jpg'
-import SkeletonComponent from "../components/SkeletonComponent";
-const Homee = () => {
-    const title = 'Test Blog';
-    const description = 'Welcome to my Notion Blog.'
-
-   
-    
-
-    const suits=[
-      {
-        id:1,
-        image:cs1,
-        title:'بدلة سليم فيت بيج فاتح',
-        details:'تفاصيل البدلة',
-       color:"بيج",
-      size:"  يوجد جميع المقاسات مع امكانية تفصيل بدلة",
-      pieces:'القطع : بليزر + بنطلون + قميص',
-      address:'متواجد بكثرة في فرع : 33 شارع الأسكندرية'
-      }, {
-        id:2,
-        image:cs2,
-        title:'بدلة سليم فيت بيج',
-        details:'تفاصيل البدلة',
-        color:"بيج",
-        size:" يوجد جميع المقاسات مع امكانية تفصيل بدلة",
-        pieces:'القطع : بليزر + بنطلون + قميص',
-        address:'متواجد بكثرة في فرع : 33 شارع الأسكندرية'
-      },
-      {
-        id:3,
-        image:cs3,
-        title:'بدلة سليم فيت كحلي',
-        details:'تفاصيل البدلة',
-        color:"كحلي",
-        size:"  يوجد جميع المقاسات مع امكانية تفصيل بدلة",
-        pieces:'القطع : بليزر + بنطلون + قميص',
-        address:'متواجد بكثرة في فرع : 33 شارع الأسكندرية'
-      },
-      {
-        id:4,
-        image:cs3,
-        title:'بدلة سليم فيت اسود',
-        details:'تفاصيل البدلة',
-        color:"اسود",
-        size:" يوجد جميع المقاسات مع امكانية تفصيل بدلة",
-        pieces:'القطع : بليزر + بنطلون + قميص',
-        address:'متواجد بكثرة في فرع : 33 شارع الأسكندرية'
-      },
-      {
-        id:5,
-        image:cs2,
-        title:'بدلة سليم فيت اسود',
-        details:'تفاصيل البدلة',
-        color:"اسود",
-        size:" يوجد جميع المقاسات مع امكانية تفصيل بدلة",
-        pieces:'القطع : بليزر + بنطلون + قميص',
-        address:'متواجد بكثرة في فرع : 33 شارع الأسكندرية'
-      },
-      {
-        id:5,
-        image:cs1,
-        title:'بدلة سليم فيت اسود',
-        details:'تفاصيل البدلة',
-        color:"اسود",
-        size:"  يوجد جميع المقاسات مع امكانية تفصيل بدلة",
-        pieces:'القطع : بليزر + بنطلون + قميص',
-        address:'متواجد بكثرة في فرع : 33 شارع الأسكندرية'
-      },
-
-
-    ]
-
-
-
-
-    const [selectedItemId, setSelectedItemId] = useState<number | null>(null);
-
-  const handleClick = (suitId: number) => {
-    setSelectedItemId(suitId);
-  
+import Product from '../components/Product'
+import { PostContent, listPostContent } from "../lib/posts";
+import { GetStaticProps } from "next";
+import config from "../lib/config";
+type Props = {
+  posts: PostContent[];
+  images: string;
+  pagination: {
+    current: number;
+    pages: number;
   };
-  const selectedItem = suits.find((suit) => suit.id === selectedItemId);
+};
 
-console.log(selectedItem)
+const Homee = ({  posts }: Props) => {
+    const title = 'Bebyon';
+    const description = 'Welcome to Bebyon.'
+    const responsive = {
+      desktop: {
+        breakpoint: { max: 3000, min: 1024 },
+        items: 5,
+      },
+      tablet: {
+        breakpoint: { max: 1024, min: 464 },
+        items: 3,
+      },
+      mobile: {
+        breakpoint: { max: 464, min: 0 },
+        items: 2,
+      },
+    };
+  
+    const images = [
+      { id: 1, src: c1, alt: 'seasonal-capsule-w17', label: 'بدل تركي' },
+      { id: 2, src: c2, alt: 'seasonal-capsule-w17', label: 'بليزر ' },
+      { id: 3, src: c3, alt: 'seasonal-capsule-w17', label: 'ازرار' },
+      { id: 4, src: c4, alt: 'seasonal-capsule-w17', label: 'ربطات العنق' },
+      { id: 5, src: c5, alt: 'seasonal-capsule-w17', label: 'الساعات' },
+      { id: 6, src: c6, alt: 'seasonal-capsule-w17', label: 'حزام' },
+      { id: 7, src: c7, alt: 'seasonal-capsule-w17', label: 'حذاء' },
+      { id: 8, src: c8, alt: 'seasonal-capsule-w17', label: 'اطفال' },
+      { id: 9, src: c9, alt: 'seasonal-capsule-w17', label: 'بناطيل' },
+
+
+    ];
+      const [showDetails, setShowDetails] = useState(false);
+
+  const handleToggleDetails = () => {
+    setShowDetails(!showDetails);
+  };
     return (
         <>
             <Head>
@@ -116,81 +83,40 @@ console.log(selectedItem)
                 <meta name={"og:description"} title={"og:description"} content={title}/>
             </Head>
          
-            <Header/>
             <Home/>
          {/*itemsin suits*/}
-        <div className="grid grid-cols-3 lg:grid-cols-9 md:grid-cols-6 gap-4 pt-4 pb-4 bg-white pr-8 pl-8 text-center">
-            <div>
-              <Image className="max-w-[100%] rounded-full mb-1" src={c1} alt="seasonal-capsule-w17" /> 
-            <p className="bg-red-700 py-2 mt-2 rounded-full hover:bg-black hover:text-red-700 cursor-pointer"      
-             >بدل تركي</p>
-              </div>
-
-            <div><Image className="max-w-[100%] rounded-full mb-1" src={c2} alt="seasonal-capsule-w17" /> <p className="bg-red-700 py-2 mt-2 rounded-full hover:bg-black hover:text-red-700 cursor-pointer">بليزر</p></div>
-            <div><Image className="max-w-[100%] rounded-full mb-1" src={c3} alt="seasonal-capsule-w17" /> <p className="bg-red-700 py-2 mt-2 rounded-full hover:bg-black hover:text-red-700 cursor-pointer">أزرار</p></div>
-            <div><Image className="max-w-[100%] rounded-full mb-1" src={c4} alt="seasonal-capsule-w17" /> <p className="bg-red-700 py-2 mt-2 rounded-full hover:bg-black hover:text-red-700 cursor-pointer">ربطات العنق</p></div>
-            <div><Image className="max-w-[100%] rounded-full mb-1" src={c5} alt="seasonal-capsule-w17" /> <p className="bg-red-700 py-2 mt-2 rounded-full hover:bg-black hover:text-red-700 cursor-pointer">الساعات</p></div>
-            <div><Image className="max-w-[100%] rounded-full mb-1" src={c6} alt="seasonal-capsule-w17" /> <p className="bg-red-700 py-2 mt-2 rounded-full hover:bg-black hover:text-red-700 cursor-pointer">حزام</p></div>
-            <div><Image className="max-w-[100%] rounded-full mb-1" src={c7} alt="seasonal-capsule-w17" /> <p className="bg-red-700 py-2 mt-2 rounded-full hover:bg-black hover:text-red-700 cursor-pointer">حذاء</p></div>
-            <div><Image className="max-w-[100%] rounded-full mb-1" src={c8} alt="seasonal-capsule-w17" /> <p className="bg-red-700 py-2 mt-2 rounded-full hover:bg-black hover:text-red-700 cursor-pointer"> أطفال</p></div>
-            <div><Image className="max-w-[100%] rounded-full mb-1" src={c9} alt="seasonal-capsule-w17" /> <p className="bg-red-700 py-2 mt-2 rounded-full hover:bg-black hover:text-red-700 cursor-pointer">بناطيل</p></div>
-        </div>
-
-        
+        <Carousel 
+        responsive={responsive} 
+        className="flex justify-center items-center mt-[40px]
+         rounded-md ">
+     
+        {images.map((image) => (
+          <div key={image.id} className="text-center mt-[30px] group-hover">
+            <Image
+              className="max-w-[100%] rounded-full mb-1 hover:scale-110 duration-200 cursor-pointer
+              "
+              src={image.src}
+              alt={image.alt}
+              width={150}
+              height={200}
+            />
+            <p className="bg-red-700 py-2 mt-3  rounded-full hover:bg-black hover:text-red-700 cursor-pointer w-[50%]">
+              {image.label}
+            </p>
+          </div>
+        ))}
+     
+    </Carousel>
         <div className="bg-[#F6F6F6] my-20 px-12 pd:px-20 lg:px-32 sm:px-20">
       <div className="flex flex-row justify-center my-5">
-        <h2 className="text-4xl mb-4"> الأحدث
-</h2>
+        <h2 className="text-4xl mb-4"> الأحدث</h2>
       </div>
-      
     <div >
-    <div className="grid grid-flow-row grid-cols-1 md:grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-10"  >
-       {suits.map((suit)=>(
-        <div className="rounded-lg" key={suit.id} >
-          <a href="#">
-          <Image 
-          src={suit.image} 
-          className="max-w-[100%] rounded-tl-lg rounded-tr-lg" 
-          alt="d" />
-        </a>
-        <div className="p-5 text-center">
-          <h3><a href="#">
-            {suit.title}
-          </a></h3>
-          <div className="flex justify-center">
-            <a 
-            className="bg-gradient-to-r from-red-600 to-[#bb0004] rounded-full py-2 px-4
-             my-2 text-sm text-white hover:bg-purple-700 flex flex-row justify-center"
-             onClick={() => handleClick(suit.id)}
-             href="#">
-              {suit.details}
-            </a>
-
-            
-                </div>
-                </div>
-                </div>
-
-         
-       ))}
-          </div>
+    
+    <Product posts={posts} />
 
     
-      
-          {selectedItem && <SkeletonComponent selectedItem={selectedItem} />}
-
-     
-
-
-
-
-
            </div>
-
-       
-
-     
-    
       </div>
      
       <div className='
@@ -204,11 +130,21 @@ console.log(selectedItem)
       
     </div>
 
-    <Footer/>
 
 
         </>
     )
 };
 
+
 export default Homee;
+
+export const getStaticProps: GetStaticProps = async () => {
+  const posts = listPostContent(1, config.posts_per_page);
+
+  return {
+    props: {
+      posts,
+    },
+  };
+};
