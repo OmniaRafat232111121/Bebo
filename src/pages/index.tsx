@@ -29,6 +29,8 @@ import Product from '../components/Product'
 import { PostContent, listPostContent } from "../lib/posts";
 import { GetStaticProps } from "next";
 import config from "../lib/config";
+import 'animate.css';
+
 type Props = {
   posts: PostContent[];
   images: string;

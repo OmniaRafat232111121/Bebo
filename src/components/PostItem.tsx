@@ -42,7 +42,11 @@ console.log(post.images[0])
     </Link>
   
       {showDetails && (
-        <Skeleton  selectedItem={post} />
+        // <Skeleton  selectedItem={post} />
+        <Skeleton selectedItem={{
+          ...post, // Spread all properties from 'post'
+          pieces: parseInt(post.pieces), // Convert 'pieces' to a number
+        }}/>
       )}
 
     </div>

@@ -9,7 +9,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <>
       <NextNProgress color="#E84E36" startPosition={0.3} stopDelayMs={200} height={3} showOnShallow={true}/>
         <div 
-        className='bg-[#F6F6F6]'
+        // className='bg-[#F6F6F6]'
         >
           <Header/>
           <Component {...pageProps} />

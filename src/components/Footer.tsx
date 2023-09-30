@@ -26,7 +26,7 @@ const Footer = (props: Props) => {
        
     ]
   return (
-    <footer dir="rtl"  className=" p-5  ">
+    <footer dir="rtl"  className=" p-5 bg-[#f9fafb] mt-4">
       <div className="pr-8 pl-8 ">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div className="text-center text-gray-600  ">
@@ -44,7 +44,7 @@ const Footer = (props: Props) => {
 
      {items.map((item)=>(
         <div className='text-center text-gray-600'>
-            <h3 className='inline text-lg font-bold mb-7 border'>{item.title}</h3>
+            <h3 className='inline text-lg font-bold mb-7 '>{item.title}</h3>
            {item.data.map((dataitem)=>(
             <div>
                 <Link href="/">
@@ -59,7 +59,7 @@ const Footer = (props: Props) => {
      ))}
      
      <div className="text-center text-gray-600">
-          <h3 className=" inline text-lg font-bold mb-7 border ">
+          <h3 className=" inline text-lg font-bold mb-7  ">
             فروعنا
 
             </h3>

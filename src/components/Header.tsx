@@ -28,7 +28,7 @@ const Header = () => {
   return (
     <>
      
-      <header dir="rtl" className='bg-white w-full z-[60] fixed top-0 shadow-md	'>
+      <header dir="rtl" className='bg-white w-full z-[60] fixed top-0 	'>
 
         <nav className='flex justify-between items-center mx-auto w-full '>
 
@@ -68,7 +68,7 @@ const Header = () => {
               <li>
                 <a 
                 href={"/"}
-                className=' pt-2 pb-3 
+                className='  pt-2 pb-3 
                   hover:text-[#bb0004] '
                 >الرئيسية</a>
               </li>

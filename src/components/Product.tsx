@@ -99,7 +99,7 @@ const MyCarousel: React.FC<MyCarouselProps> = ({ posts }) => {
               className="relative mt-3 p-4"
             >
 
-              <Image src={post.images[0].image} alt="product Image" width={300} height={400} />
+              <Image src={post.images[0].image} alt="product Image" width={300} height={500} />
               <div className="parent-container">
                 <button className="review-button" onClick={handleToggleDetails}>
                   Quick Review
