@@ -5,8 +5,6 @@ import Image from 'next/image';
 import { FaHeart } from 'react-icons/fa';
 import { PostContent } from '../lib/posts';
 import Skeletonn from './Skeletonn';
-import Link from 'next/link';
-
 interface MyCarouselProps {
   posts: PostContent[];
 }
@@ -58,8 +56,8 @@ const MyCarousel: React.FC<MyCarouselProps> = ({ posts }) => {
 
   // Filter posts based on the selected tag
   const filteredPosts = selectedTag
-    ? posts.filter((post) => post.tags.includes(selectedTag))
-    : posts;
+  ? posts.filter((post) => post.tags?.includes(selectedTag))
+  : posts;
 
   return (
     <>
