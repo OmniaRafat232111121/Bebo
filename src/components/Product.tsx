@@ -71,11 +71,14 @@ const MyCarousel: React.FC<MyCarouselProps> = ({ posts }) => {
           All
         </button>
         {posts.reduce((tags, post) => {
-  post.tags?.forEach((tag) => {
-    if (tag && !tags.includes(tag)) {
-      tags.push(tag);
-    }
-  });
+  const uniqueTags: string[] = posts.reduce<string[]>((tags, post) => {
+    post.tags?.forEach((tag) => {
+      if (tag && !tags.includes(tag)) {
+        tags.push(tag);
+      }
+    });
+    return tags;
+  }, []);
   return tags;
 }, []).map((tag: string) => ( // Specify the type of tag as string
   <button
