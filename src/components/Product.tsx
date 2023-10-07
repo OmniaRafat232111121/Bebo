@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { FaHeart } from 'react-icons/fa';
 import { PostContent } from '../lib/posts';
 import Skeletonn from './Skeletonn';
+
 interface MyCarouselProps {
   posts: PostContent[];
 }
@@ -58,7 +59,6 @@ const MyCarousel: React.FC<MyCarouselProps> = ({ posts }) => {
   const filteredPosts = selectedTag
   ? posts.filter((post) => post.tags?.includes(selectedTag))
   : posts;
-
   return (
     <>
       <div className="tags-container ">
@@ -68,17 +68,14 @@ const MyCarousel: React.FC<MyCarouselProps> = ({ posts }) => {
         >
           All
         </button>
-        {posts.reduce((tags, post) => {
-  const uniqueTags: string[] = posts.reduce<string[]>((tags, post) => {
-    post.tags?.forEach((tag) => {
-      if (tag && !tags.includes(tag)) {
-        tags.push(tag);
-      }
-    });
-    return tags;
-  }, []);
+        {posts.reduce((tags: string[], post) => {
+  post.tags?.forEach((tag: string) => {
+    if (tag && !tags.includes(tag)) {
+      tags.push(tag);
+    }
+  });
   return tags;
-}, []).map((tag: string) => ( // Specify the type of tag as string
+}, []).map((tag: string) => (
   <button
     key={tag}
     className={`tag ${selectedTag === tag ? 'active' : ''}`}
